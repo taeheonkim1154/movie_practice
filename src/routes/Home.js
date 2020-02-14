@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "../components/Movie";
+import BuyComponent from "../components/BuyComponent";
 
 class Home extends React.Component{
     state = {
@@ -22,7 +23,12 @@ class Home extends React.Component{
                 ) : (
                     <div className="movies">
                         {movies.map(arg => {
-                            return <Movie key={arg.id} id={arg.id} year={arg.year} title={arg.title_long} summary={arg.summary} poster={arg.medium_cover_image} genres={arg.genres}/>
+                            return (
+                                <div>
+                                    <Movie key={arg.id} id={arg.id} year={arg.year} title={arg.title_long} summary={arg.summary} poster={arg.medium_cover_image} genres={arg.genres}/>
+                                    <BuyComponent key={arg.title} id={arg.id} title={arg.title} poster={arg.medium_cover_image}/>
+                                </div>
+                            )
                         })}
                     </div>
                 )}
